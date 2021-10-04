@@ -1,5 +1,6 @@
 package springstudy.springtest.repository;
 
+import org.springframework.stereotype.Repository;
 import springstudy.springtest.domain.Member;
 
 import java.util.*;

@@ -1,5 +1,7 @@
 package springstudy.springtest.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import springstudy.springtest.domain.Member;
 import springstudy.springtest.repository.MemberRepository;
 import springstudy.springtest.repository.MemoryMemberRepository;
