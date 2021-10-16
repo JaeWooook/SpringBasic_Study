@@ -7,6 +7,7 @@ import springstudy.springtest.repository.JdbcMemberRepository;
 import springstudy.springtest.repository.MemberRepository;
 import springstudy.springtest.repository.MemoryMemberRepository;
 import springstudy.springtest.service.MemberService;
+import springstudy.springtest.repository.JdbcTemplateMemberRepository;
 
 import javax.sql.DataSource;
 
@@ -15,7 +16,6 @@ public class SpringConfig {
 
     private DataSource dataSource;
 
-    @Autowired
     public SpringConfig(DataSource dataSource) {
         this.dataSource = dataSource;
     }
@@ -28,7 +28,9 @@ public class SpringConfig {
     @Bean
     public MemberRepository memberRepository() {
 //        return new MemoryMemberRepository();
-        return new JdbcMemberRepository(dataSource);
+//        return new JdbcMemberRepository(dataSource);
+        return new JdbcTemplateMemberRepository(dataSource);
         //이걸로 바꿔서 메모리에 저장되던것을 바꿔줘야한다 스프링에서 빈연결해주는 부분이다.
     }
+
 }
