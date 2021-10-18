@@ -2,6 +2,7 @@ package springstudy.springtest.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import springstudy.springtest.domain.Member;
 import springstudy.springtest.repository.MemberRepository;
 import springstudy.springtest.repository.MemoryMemberRepository;
@@ -9,6 +10,7 @@ import springstudy.springtest.repository.MemoryMemberRepository;
 import java.util.List;
 import java.util.Optional;
 
+@Transactional
 public class MemberService {
     //test에서 같은 인스턴스 리포지토리 사용하기위함
     //private final MemberRepository memberRepository = new MemoryMemberRepository();

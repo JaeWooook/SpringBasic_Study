@@ -3,22 +3,26 @@ package springstudy.springtest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import springstudy.springtest.repository.JdbcMemberRepository;
-import springstudy.springtest.repository.MemberRepository;
-import springstudy.springtest.repository.MemoryMemberRepository;
+import springstudy.springtest.repository.*;
 import springstudy.springtest.service.MemberService;
-import springstudy.springtest.repository.JdbcTemplateMemberRepository;
 
-import javax.sql.DataSource;
+import javax.persistence.EntityManager;
 
 @Configuration
 public class SpringConfig {
 
-    private DataSource dataSource;
+//    private DataSource dataSource;
 
-    public SpringConfig(DataSource dataSource) {
-        this.dataSource = dataSource;
+    private EntityManager em;
+
+    @Autowired
+    public SpringConfig(EntityManager em) {
+        this.em = em;
     }
+//    @Autowired
+//    public SpringConfig(DataSource dataSource) {
+//        this.dataSource = dataSource;
+//    }
 
     @Bean
     public MemberService memberService() {
@@ -29,8 +33,9 @@ public class SpringConfig {
     public MemberRepository memberRepository() {
 //        return new MemoryMemberRepository();
 //        return new JdbcMemberRepository(dataSource);
-        return new JdbcTemplateMemberRepository(dataSource);
+//        return new JdbcTemplateMemberRepository(dataSource);
         //이걸로 바꿔서 메모리에 저장되던것을 바꿔줘야한다 스프링에서 빈연결해주는 부분이다.
+        return new JpaMemberRepository(em);
     }
 
 }
